@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+## SENT, 오늘의 감정 기록 아카이브
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### By 박소정, 박견우, 김채현, 송명훈, 김이린
 
-## Available Scripts
+#### 한 사람이 가지고 있는 다양한 페르소나를 표현할 수는 없을까?
+#### -> 자신의 감정을 문장으로 기록할 수 있는 서비스를 만들자!
 
-In the project directory, you can run:
 
-### `npm start`
+### MY SENT, OUR SENT
+<img width="1416" alt="스크린샷 2022-11-10 11 06 58" src="https://user-images.githubusercontent.com/101280374/200983198-63ebc69e-27e7-49c4-8fc4-88282083a00a.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 카테고리로 나눌 수 있는 자신만의 감정기록
+<img width="1417" alt="스크린샷 2022-11-10 11 07 15" src="https://user-images.githubusercontent.com/101280374/200983287-98336739-72b1-49cb-b0c3-bac49cf7fa1f.png">
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 사람들과 함께 공유하는 감정
+<img width="1415" alt="스크린샷 2022-11-10 11 07 30" src="https://user-images.githubusercontent.com/101280374/200983349-0c7e2f5b-6b27-4b2c-aeb4-c2c0dd2ff427.png">
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### 프로젝트 상세 설명은 PDF 참고
+[SENT, 오늘의 감정 기록 아카이브.pdf](https://github.com/Pelixhoon/SENT_likelion/files/9976717/SENT.pdf)
