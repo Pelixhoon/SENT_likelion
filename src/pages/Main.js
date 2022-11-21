@@ -4,16 +4,18 @@ import styled from "styled-components";
 
 export default function Main() {
   const [username, setUsername] = useState("");
+  const [token, setToken] = useState("");
 
   // 로그인 함수
   const login = async () => {
-    const response = await axios
-      .post("http://127.0.0.1:8000/login/", {
-        username: "admin@likelion.org",
-        password: "zzang0901",
+    await axios
+      .post("http://127.0.0.1:8000/user/login/", {
+        "username": "admin",
+        "password": "zzang0901",
       })
       .then(function (response) {
         console.log("로그인 성공", response);
+        setToken(response.data.token);
       })
       .catch(function (error) {
         console.log("로그인 실패", error);
@@ -22,23 +24,25 @@ export default function Main() {
 
   // 회원가입 함수
   const signup = async () => {
-    const response = await axios
+    await axios
       .post("http://127.0.0.1:8000/user/userRegister/", {
-        username: "admin",
-        password: "zzang0901",
-        password2: "zzang0901",
-        email: "admin@likelion.org",
+        "username": "admin",
+        "password": "zzang0901",
+        "password2": "zzang0901",
+        "email": "admin@likelion.org",
       })
       .then(function (response) {
         console.log("회원가입 성공", response);
+        setUsername(response.data.username);
       })
       .catch(function (error) {
         console.log("회원가입 실패", error);
       });
   };
-  //Post를 post하는 함수
+
+  // Post를 post하는 함수
   const postPost = async () => {
-    const response = await axios
+    await axios
       .post("http://127.0.0.1:8000/posts/", {
         title: "프런트엔드 공부",
         body: "리액트!",
