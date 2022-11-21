@@ -1,18 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
-import Theme from "./styles/Theme";
-import { ThemeProvider } from "styled-components";
-
-import Routes from "./Routes";
+import Main from "./pages/Main";
 
 const rootNode = document.getElementById("root");
 
 ReactDOM.createRoot(rootNode).render(
   <>
-    <GlobalStyle />
-    <ThemeProvider theme={Theme}>
-      <Routes />
-    </ThemeProvider>
+    <GlobalStyle>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </BrowserRouter>
+    </GlobalStyle>
   </>
 );
