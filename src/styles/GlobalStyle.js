@@ -77,7 +77,8 @@ const Container = styled.div`
 const Body = styled.div`
   max-width: 450px;
   margin: 0 auto;
-  //   background-color: #000000;
+  font-family: "Noto Sans KR", sans-serif;
+  background-color: #191919;
   @media (min-width: 450px) {
     min-height: 100vh;
   }

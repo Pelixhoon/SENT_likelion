@@ -1,9 +1,47 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import APIs from "../api/Main";
 import styled from "styled-components";
 
 export default function Main() {
+  const navigate = useNavigate();
+  const navigateToLogin = () => {
+    navigate("/login");
+  };
+
+  return (
+    <MainWrapper onClick={navigateToLogin}>
+      <img src="/images/logo.png" alt="logo" />
+      <TitleParagrpah>SENT</TitleParagrpah>
+      {/* <button onClick={onPostSENTClick}>포스트 등록</button>
+      <button onClick={onSignupClick}>회원가입</button>
+      <button onClick={onLoginClick}>로그인</button> 
+      <div>
+        <p>{post.title}</p>
+      </div> */}
+    </MainWrapper>
+  );
+}
+
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+`;
+
+const TitleParagrpah = styled.p`
+  color: white;
+  font-weight: 800;
+  font-size: 7rem;
+  font: san-serif;
+  padding: 5rem;
+`;
+
+/*
+height: calc(var(--vh, 1vh) * 100);
   const [username, setUsername] = useState("");
   const [token, setToken] = useState("");
   const [post, setPost] = useState({});
@@ -56,34 +94,4 @@ export default function Main() {
         console.log("등록 에러", error);
       });
   };
-
-  return (
-    <MainWrapper>
-      <img src="/images/logo.png" alt="logo" />
-      <TitleParagrpah>SENT</TitleParagrpah>
-      <button onClick={onPostSENTClick}>포스트 등록</button>
-      <button onClick={onSignupClick}>회원가입</button>
-      <button onClick={onLoginClick}>로그인</button>
-      <div>
-        <p>{post.title}</p>
-      </div>
-    </MainWrapper>
-  );
-}
-
-const MainWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 800px;
-`;
-
-const TitleParagrpah = styled.p`
-  color: white;
-  font-size: 5rem;
-  font: san-serif;
-`;
-
-/*
-height: calc(var(--vh, 1vh) * 100);
 */
