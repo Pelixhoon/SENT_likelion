@@ -1,45 +1,57 @@
 import React, { useState } from "react";
-import axios from "axios";
 import APIs from "../api/Main";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Button from "../styles/Button";
 
 export default function Login() {
-  const [username, setUsername] = useState({
+  const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
   });
-
-  const { username, password } = username;
-
+  const [error, setError] = useState(null);
   const [token, setToken] = useState("");
 
-  const onLoginClick = async () => {
-    await APIs.login({
-      username: "",
-      password: "",
-    })
-      .then(function (response) {
+  const onFormChange = (e) => {
+    // console.log(e.target.name, e.target.value);
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    await APIs.login(userInfo)
+      .then((response) => {
         console.log("로그인 성공", response);
         setToken(response.data.token);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log("로그인 실패", error);
+        setError(error);
       });
   };
 
   return (
     <MainWrapper>
       <LoginTitle>로그인</LoginTitle>
-      <LoginSection>
-        <p>아이디</p>
-        <input name="username" onChange={onChange} value={username}></input>
-        <p>비밀번호</p>
-        <input name="password" onChange={onChange} value={password}></input>
-        {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
-      </LoginSection>
-      <Button onClick={onLoginClick}>로그인</Button>
+      <form onSubmit={handleLoginSubmit}>
+        <LoginSection>
+          <p>아이디</p>
+          <input
+            name="username"
+            onChange={onFormChange}
+            value={userInfo.username}
+          ></input>
+          <p>비밀번호</p>
+          <input
+            name="password"
+            onChange={onFormChange}
+            value={userInfo.password}
+          ></input>
+          {/* {error.msg ==='' && <p>{error.msg}</p>} */}
+          {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
+        </LoginSection>
+        <Button type="submit">로그인</Button>
+      </form>
       <SignupSection>
         <SubParagraph>SENT가 혹시 처음이세요?</SubParagraph>
         <NavLink to="/signup">회원가입</NavLink>
