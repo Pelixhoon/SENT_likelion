@@ -1,31 +1,37 @@
 import React, { useState } from "react";
-import axios from "axios";
 import APIs from "../api/Main";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import Button from "../styles/Button";
 
 export default function Login() {
-  const [username, setUsername] = useState({
+  const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
   });
+  const [error, setError] = useState(null);
 
-  const { username, password } = username;
+  const onUsernameChange = (e) => {
+    // console.log("유저네임", e.target.value);
+    setUserInfo({ ...userInfo, username: e.target.value });
+  };
+
+  const onPasswordChange = (e) => {
+    // console.log("패스워드", userInfo.username);
+    setUserInfo({ ...userInfo, password: e.target.value });
+  };
 
   const [token, setToken] = useState("");
 
   const onLoginClick = async () => {
-    await APIs.login({
-      username: "",
-      password: "",
-    })
-      .then(function (response) {
+    await APIs.login(userInfo)
+      .then((response) => {
         console.log("로그인 성공", response);
         setToken(response.data.token);
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log("로그인 실패", error);
+        setError(error);
       });
   };
 
@@ -34,9 +40,18 @@ export default function Login() {
       <LoginTitle>로그인</LoginTitle>
       <LoginSection>
         <p>아이디</p>
-        <input name="username" onChange={onChange} value={username}></input>
+        <input
+          name="username"
+          onChange={onUsernameChange}
+          value={userInfo.username}
+        ></input>
         <p>비밀번호</p>
-        <input name="password" onChange={onChange} value={password}></input>
+        <input
+          name="password"
+          onChange={onPasswordChange}
+          value={userInfo.password}
+        ></input>
+        {/* {error.msg ==='' && <p>{error.msg}</p>} */}
         {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
       </LoginSection>
       <Button onClick={onLoginClick}>로그인</Button>
