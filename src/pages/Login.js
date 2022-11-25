@@ -10,20 +10,15 @@ export default function Login() {
     password: "",
   });
   const [error, setError] = useState(null);
-
-  const onUsernameChange = (e) => {
-    // console.log("유저네임", e.target.value);
-    setUserInfo({ ...userInfo, username: e.target.value });
-  };
-
-  const onPasswordChange = (e) => {
-    // console.log("패스워드", userInfo.username);
-    setUserInfo({ ...userInfo, password: e.target.value });
-  };
-
   const [token, setToken] = useState("");
 
-  const onLoginClick = async () => {
+  const onFormChange = (e) => {
+    console.log(e.target.name, e.target.value);
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
     await APIs.login(userInfo)
       .then((response) => {
         console.log("로그인 성공", response);
@@ -38,29 +33,25 @@ export default function Login() {
   return (
     <MainWrapper>
       <LoginTitle>로그인</LoginTitle>
-      <form>
+      <form onSubmit={handleLoginSubmit}>
         <LoginSection>
           <p>아이디</p>
           <input
             name="username"
-            onChange={onUsernameChange}
+            onChange={onFormChange}
             value={userInfo.username}
           ></input>
           <p>비밀번호</p>
           <input
             name="password"
-            onChange={onPasswordChange}
+            onChange={onFormChange}
             value={userInfo.password}
           ></input>
           {/* {error.msg ==='' && <p>{error.msg}</p>} */}
           {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
         </LoginSection>
-        <button type="submit" onClick={onLoginClick}>
-          Login
-        </button>
-        {/* <Button type="submit" onClick={onLoginClick}>
-          로그인
-        </Button> */}
+        {/* <button type="submit">Login</button> */}
+        <Button type="submit">로그인</Button>
       </form>
       <SignupSection>
         <SubParagraph>SENT가 혹시 처음이세요?</SubParagraph>
