@@ -38,23 +38,30 @@ export default function Login() {
   return (
     <MainWrapper>
       <LoginTitle>로그인</LoginTitle>
-      <LoginSection>
-        <p>아이디</p>
-        <input
-          name="username"
-          onChange={onUsernameChange}
-          value={userInfo.username}
-        ></input>
-        <p>비밀번호</p>
-        <input
-          name="password"
-          onChange={onPasswordChange}
-          value={userInfo.password}
-        ></input>
-        {/* {error.msg ==='' && <p>{error.msg}</p>} */}
-        {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
-      </LoginSection>
-      <Button onClick={onLoginClick}>로그인</Button>
+      <form>
+        <LoginSection>
+          <p>아이디</p>
+          <input
+            name="username"
+            onChange={onUsernameChange}
+            value={userInfo.username}
+          ></input>
+          <p>비밀번호</p>
+          <input
+            name="password"
+            onChange={onPasswordChange}
+            value={userInfo.password}
+          ></input>
+          {/* {error.msg ==='' && <p>{error.msg}</p>} */}
+          {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
+        </LoginSection>
+        <button type="submit" onClick={onLoginClick}>
+          Login
+        </button>
+        {/* <Button type="submit" onClick={onLoginClick}>
+          로그인
+        </Button> */}
+      </form>
       <SignupSection>
         <SubParagraph>SENT가 혹시 처음이세요?</SubParagraph>
         <NavLink to="/signup">회원가입</NavLink>
