@@ -13,7 +13,7 @@ export default function Login() {
   const [token, setToken] = useState("");
 
   const onFormChange = (e) => {
-    console.log(e.target.name, e.target.value);
+    // console.log(e.target.name, e.target.value);
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
@@ -50,7 +50,6 @@ export default function Login() {
           {/* {error.msg ==='' && <p>{error.msg}</p>} */}
           {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
         </LoginSection>
-        {/* <button type="submit">Login</button> */}
         <Button type="submit">로그인</Button>
       </form>
       <SignupSection>

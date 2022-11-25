@@ -15,7 +15,7 @@ export default function Signup() {
   const [error, setError] = useState(null);
 
   const onFormChange = (e) => {
-    console.log(e.target.name, e.target.value);
+    // console.log(e.target.name, e.target.value);
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
@@ -61,8 +61,7 @@ export default function Signup() {
             value={userInfo.password2}
           ></input>
         </LoginSection>
-        <button type="submit">회원가입</button>
-        {/* <Button onClick={onSignupSubmit}>회원가입</Button> */}
+        <Button type="submit">회원가입</Button>
       </form>
       <SignupSection>
         <SubParagraph>이미 계정이 있으신가요?</SubParagraph>
