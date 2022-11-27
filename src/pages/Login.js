@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import APIs from "../api/Main";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../styles/Button";
 
 export default function Login() {
@@ -11,6 +11,16 @@ export default function Login() {
   });
   const [error, setError] = useState(null);
   const [token, setToken] = useState("");
+  const navigate = useNavigate();
+  const [isEnable, setIsEnable] = useState(true);
+
+  useEffect(() => {
+    userInfo.username && userInfo.password
+      ? setIsEnable(false)
+      : setIsEnable(true);
+  }, [userInfo]);
+
+  const valid = !(userInfo.username && userInfo.password);
 
   const onFormChange = (e) => {
     // console.log(e.target.name, e.target.value);
@@ -23,6 +33,7 @@ export default function Login() {
       .then((response) => {
         console.log("로그인 성공", response);
         setToken(response.data.token);
+        navigate("/home");
       })
       .catch((error) => {
         console.log("로그인 실패", error);
@@ -50,7 +61,9 @@ export default function Login() {
           {/* {error.msg ==='' && <p>{error.msg}</p>} */}
           {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
         </LoginSection>
-        <Button type="submit">로그인</Button>
+        <Button type="submit" disabled={valid}>
+          로그인
+        </Button>
       </form>
       <SignupSection>
         <SubParagraph>SENT가 혹시 처음이세요?</SubParagraph>
