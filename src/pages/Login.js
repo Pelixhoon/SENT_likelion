@@ -46,18 +46,18 @@ export default function Login() {
       <LoginTitle>로그인</LoginTitle>
       <form onSubmit={handleLoginSubmit}>
         <LoginSection>
-          <p>아이디</p>
-          <input
+          <IDPWTitle>아이디</IDPWTitle>
+          <IDPWInput
             name="username"
             onChange={onFormChange}
             value={userInfo.username}
-          ></input>
-          <p>비밀번호</p>
-          <input
+          ></IDPWInput>
+          <IDPWTitle>비밀번호</IDPWTitle>
+          <IDPWInput
             name="password"
             onChange={onFormChange}
             value={userInfo.password}
-          ></input>
+          ></IDPWInput>
           {/* {error.msg ==='' && <p>{error.msg}</p>} */}
           {/* <NavLink to="/#">비밀번호를 잊으셨나요?</NavLink> */}
         </LoginSection>
@@ -66,7 +66,7 @@ export default function Login() {
         </Button>
       </form>
       <SignupSection>
-        <SubParagraph>SENT가 혹시 처음이세요?</SubParagraph>
+        <SubParagraph>SENT가 처음이세요?&nbsp;&nbsp;&nbsp;</SubParagraph>
         <NavLink to="/signup">회원가입</NavLink>
       </SignupSection>
     </MainWrapper>
@@ -85,12 +85,31 @@ const MainWrapper = styled.div`
 const LoginSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding: 6rem;
   font-size: 2rem;
+  width: 45rem;
+`;
+
+const IDPWInput = styled.input`
+  height: 3.8rem;
+  margin-bottom: 2.5rem;
+  color:white;
+  font-size: 2rem;
+  background-color:rgba(25, 25, 25, 1);
+  border:0.3rem;
+  border-bottom-style: solid;
+  border-color:rgba(25, 25, 25, 1);
+  border-bottom-color:rgba(78, 25, 255, 1);
+`;
+
+const IDPWTitle = styled.p`
+  margin-bottom: 0.5rem;
 `;
 
 const LoginTitle = styled.div`
-  font-size: 2.3rem;
+  font-size: 3.2rem;
+  width: 45rem;
+  padding: 6rem;
 `;
 
 const SignupSection = styled.div`
@@ -102,4 +121,5 @@ const SignupSection = styled.div`
 
 const SubParagraph = styled.p`
   font-size: 1.5rem;
+  color:rgba(87, 87, 87, 1);
 `;

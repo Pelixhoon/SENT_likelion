@@ -10,13 +10,16 @@ const StyledButton = styled.button`
   border: none;
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
-  font-size: var(--button-font-size, 1.5rem);
-  border-radius: var(--button-radius, 14px);
+  font-size: var(--button-font-size, 2rem);
+  font-weight: bold;
+  border-radius: var(--button-radius, 25px);
   background: var(--button-bg-color, #4e19ff);
   color: var(--button-color, #ffffff);
 
-  height: 3rem;
-  width: 20rem;
+  height: 4.5rem;
+  width: 33rem;
+  margin-left: 6rem;
+  margin-right: 6rem;
 
   &:active,
   &:hover,

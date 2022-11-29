@@ -58,37 +58,37 @@ export default function Signup() {
       <LoginTitle>회원가입</LoginTitle>
       <form onSubmit={handleSignupSubmit}>
         <LoginSection>
-          <p>아이디</p>
-          <input
+          <IDPWTitle>아이디</IDPWTitle>
+          <IDPWInput
             name="username"
             onChange={onFormChange}
             value={userInfo.username}
-          ></input>
-          <p>이메일</p>
-          <input
+          ></IDPWInput>
+          <IDPWTitle>이메일</IDPWTitle>
+          <IDPWInput
             name="email"
             onChange={onFormChange}
             value={userInfo.email}
-          ></input>
-          <p>비밀번호</p>
-          <input
+          ></IDPWInput>
+          <IDPWTitle>비밀번호</IDPWTitle>
+          <IDPWInput
             name="password"
             onChange={onFormChange}
             value={userInfo.password}
-          ></input>
-          <p>비밀번호 확인</p>
-          <input
+          ></IDPWInput>
+          <IDPWTitle>비밀번호 확인</IDPWTitle>
+          <IDPWInput
             name="password2"
             onChange={onFormChange}
             value={userInfo.password2}
-          ></input>
+          ></IDPWInput>
         </LoginSection>
         <Button type="submit" disabled={valid}>
           회원가입
         </Button>
       </form>
       <SignupSection>
-        <SubParagraph>이미 계정이 있으신가요?</SubParagraph>
+        <SubParagraph>이미 계정이 있으신가요?&nbsp;&nbsp;&nbsp;</SubParagraph>
         <NavLink to="/login">로그인</NavLink>
       </SignupSection>
     </MainWrapper>
@@ -107,12 +107,32 @@ const MainWrapper = styled.div`
 const LoginSection = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 4rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
   font-size: 2rem;
+  width: 45rem;
+`;
+
+const IDPWInput = styled.input`
+  height: 3.8rem;
+  margin-bottom: 2.5rem;
+  color:white;
+  font-size: 2rem;
+  background-color:rgba(25, 25, 25, 1);
+  border:0.3rem;
+  border-bottom-style: solid;
+  border-color:rgba(25, 25, 25, 1);
+  border-bottom-color:rgba(78, 25, 255, 1);
+`;
+
+const IDPWTitle = styled.p`
+  margin-bottom: 0.5rem;
 `;
 
 const LoginTitle = styled.div`
-  font-size: 2.3rem;
+  font-size: 3.2rem;
+  width: 45rem;
+  padding: 6rem;
 `;
 
 const SignupSection = styled.div`
@@ -124,4 +144,5 @@ const SignupSection = styled.div`
 
 const SubParagraph = styled.p`
   font-size: 1.5rem;
+  color:rgba(87, 87, 87, 1);
 `;

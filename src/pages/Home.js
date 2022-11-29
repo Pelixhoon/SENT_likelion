@@ -17,7 +17,11 @@ export default function Home() {
         color="white"
         fontSize="2.5rem"
       >
-        MY SENT
+        <PinkImg src="./images/pink.png" alt="sent_pink"></PinkImg>
+        <BoxContent>
+          <BoxWord>MY SENT</BoxWord>
+          <ButtonImg src="./images/sent_button.png" alt="sent_button"></ButtonImg>
+        </BoxContent>
       </Box>
       <StyledParagraph>CHART</StyledParagraph>
       <Box backgroundColor="white" color="black" fontSize="2rem">
@@ -39,16 +43,38 @@ const MainWrapper = styled.div`
 const StyledParagraph = styled.p`
   font-size: 3rem;
   color: white;
-  font-weight: 700;
-  padding: 3rem;
+  font-weight: 800;
+  width: 45rem;
+  padding: 1rem 3rem;
+  margin-top: 5rem;
 `;
 
 const Box = styled.button`
   font-size: ${(props) => props.fontSize};
-  height: 34rem;
-  width: 38rem;
+  height: 35rem;
+  width: 39.7rem;
   color: ${(props) => props.color};
   border: none;
   background-color: ${(props) => props.backgroundColor};
   border-radius: 1rem;
+`;
+
+const PinkImg = styled.img`
+  width: 40rem;
+`;
+
+const BoxContent = styled.div`
+  width: 39.7rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-right: 2rem;
+`;
+
+const BoxWord = styled.p`
+  font-weight: bold;
+`;
+
+const ButtonImg = styled.img`
+  width: 5rem;
 `;
