@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Button({ disabled, size, children }) {
-  return <StyledButton disabled={disabled}>{children}</StyledButton>;
+export default function Button({ disabled, size, children, onClick }) {
+  return (
+    <StyledButton disabled={disabled} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
 }
 
 const StyledButton = styled.button`

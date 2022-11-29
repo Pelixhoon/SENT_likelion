@@ -45,6 +45,12 @@ const postSENT = async (SENTInfo, token) => {
   return response;
 };
 
+// SENT를 GET하는 함수
+const getSENT = async (e) => {
+  const response = await axios.get(API_URL.SENTLIST);
+  return response;
+};
+
 const APIs = {
   login,
   signup,
