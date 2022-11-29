@@ -76,5 +76,5 @@ const BoxWord = styled.p`
 `;
 
 const ButtonImg = styled.img`
-  width: 5rem;
+  width: 4rem;
 `;
