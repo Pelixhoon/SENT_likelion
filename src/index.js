@@ -23,7 +23,7 @@ ReactDOM.createRoot(rootNode).render(
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
           <Route path="/mysent" element={<MySent />} />
-          <Route path="/mysentlist/:pk" element={<MySentList />} />
+          <Route path="/mysentlist" element={<MySentList />} />
           <Route path="/postsent" element={<PostSent />} />
           <Route path="/writesent" element={<WriteSent />} />
         </Routes>

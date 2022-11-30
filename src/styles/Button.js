@@ -31,6 +31,7 @@ const StyledButton = styled.button`
   &:disabled {
     cursor: default;
     opacity: 0.5;
-    background: var(--button-bg-color, #025ce2);
+    color: #777777;
+    background: var(--button-bg-color, #fafafa);
   }
 `;

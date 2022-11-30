@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import Button from "../styles/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function MySentList() {
   const [comments, setComments] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
   const navigateToWriteSent = () => {
     navigate("/writesent");
   };
@@ -19,9 +20,7 @@ export default function MySentList() {
         setError(null);
         setComments(null);
         setLoading(true);
-        const response = await axios.get("http://127.0.0.1:8000/comments/", {
-          headers: { Authorization: token },
-        });
+        const response = await axios.get("http://127.0.0.1:8000/comments/");
         console.log("response", response.data);
         setComments(response.data);
       } catch (e) {
@@ -29,18 +28,17 @@ export default function MySentList() {
       }
       setLoading(false);
     };
-    fetchPosts();
+    fetchComments();
   }, []);
 
   return (
     <MainWrapper>
       {error && <p>error</p>}
       {loading && <p>loading...</p>}
-      {posts &&
-        posts.map((post) => (
-          <div key={post.pk}>
-            <h1>{post.comment}</h1>
-            {/* <p>{post.published_date}</p> */}
+      {comments &&
+        comments.map((post) => (
+          <div key={comments.pk}>
+            <h1>{comments.post}</h1>
           </div>
         ))}
       <Button onClick={navigateToWriteSent}>SENT 추가하기✏️</Button>
