@@ -1,61 +1,62 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axios from "axios";
 import APIs from "../api/Main";
 import Button from "../styles/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function WriteMySent() {
-  const [posts, setPosts] = useState(null);
-  const [loading, setLoading] = useState(false);
+export default function PostComment() {
+  const { id } = useParams();
+  const [token, setToken] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [SENTinfo, setSENTinfo] = useState({
-    body: "",
+  const [postInfo, setPostInfo] = useState({
+    pk: id,
+    text: "",
   });
   const navigate = useNavigate();
-
-  const [isEnable, setIsEnable] = useState(true);
-
-  const valid = !SENTinfo.body;
+  const [, setIsEnable] = useState(true);
 
   useEffect(() => {
-    SENTinfo.body ? setIsEnable(false) : setIsEnable(true);
-  }, [SENTinfo]);
+    postInfo.text ? setIsEnable(false) : setIsEnable(true);
+  }, [postInfo]);
 
   const onFormChange = (e) => {
     // console.log(e.target.name, e.target.value);
-    setSENTinfo({ ...SENTinfo, [e.target.name]: e.target.value });
+    setPostInfo({ ...postInfo, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    localStorage.getItem("token") && setToken(localStorage.getItem("token"));
+  }, []);
+
   //SENT 내용을 post하는 함수
-  const handleWriteSent = async (e) => {
+  const handlePostComment = async (e) => {
     e.preventDefault();
-    await APIs.postSENT(SENTinfo)
+    await APIs.postComment(postInfo, token)
       .then((response) => {
-        console.log("SENT 등록 결과", response);
-        navigate("/#");
+        console.log("Comment 등록 결과", response);
+        navigate("/mysent");
       })
       .catch((error) => {
-        console.log("SENT 등록 에러", error);
+        console.log("Comment 등록 에러", error);
         setError(error);
       });
   };
 
   return (
     <MainWrapper>
-      <PageTitle>만든 이름으로 들어가야 함</PageTitle>
-      <form onSubmit={handleWriteSent}>
+      <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
+      <PageTitle>만든 이름으로 들어가야</PageTitle>
+      <form onSubmit={handlePostComment}>
         <SentArea>
           <TextArea
-            name="body"
+            name="text"
             onChange={onFormChange}
-            value={SENTinfo.body}
+            value={postInfo.text}
             placeholder="오늘의 문장을 기록해보세요 :)"
           ></TextArea>
         </SentArea>
-        <Button type="submit" disabled={valid}>
-            만들기
-        </Button>
+        <Button type="submit">만들기</Button>
       </form>
     </MainWrapper>
   );
@@ -75,7 +76,6 @@ const PageTitle = styled.h1`
   margin: 6rem;
 `;
 
-
 const SentArea = styled.div`
   display: flex;
   flex-direction: column;
@@ -93,4 +93,8 @@ const TextArea = styled.textarea`
   padding: 3rem;
   font-size: 2rem;
   font-weight: bold;
+`;
+
+const ButtonImg2 = styled.img`
+  width: 4.5rem;
 `;

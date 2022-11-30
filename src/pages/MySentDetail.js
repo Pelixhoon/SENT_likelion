@@ -2,38 +2,64 @@ import React, { useState, useEffect } from "react";
 import APIs from "../api/Main";
 import styled from "styled-components";
 import Button from "../styles/Button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function MySent() {
+export default function MySentDetail(props) {
+  const { id } = useParams();
+  console.log(id);
+
   const [mySENTS, setMySENTS] = useState(null);
+  const [myCOMMENTS, setMyCOMMENTS] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
-  const navigateToPostSent = () => {
-    navigate("/postsent");
+  const navigateToPostComment = () => {
+    navigate("/postcomment/" + id);
   };
 
   const getMySENTS = async (userId) => {
     try {
       const response = await APIs.getSENTS();
-      console.log(
-        "MY SENT filter 목록",
-        response.data.filter((SENT) => SENT.profile.user.toString() === userId)
+      // console.log(
+      //   "MY SENT filter 목록",
+      //   response.data.filter((SENT) => SENT.profile.user.toString() === userId)
+      // );
+      const posts = response.data.filter(
+        (SENT) => SENT.profile.user.toString() === userId
       );
-      setMySENTS(
-        response.data.filter((SENT) => SENT.profile.user.toString() === userId)
-      );
+      setMySENTS(posts);
+      const comments = posts.filter((post) => post.pk.toString() === id)[0]
+        .comments;
+      setMyCOMMENTS(comments);
     } catch (e) {
       console.log("SENT 목록 조회 실패", e);
       setError(e);
     }
     setLoading(false);
   };
+  // const getMyCOMMENTS = async (userId) => {
+  //   try {
+  //     const response = await APIs.getCOMMENTS();
+  //     console.log(response.data);
+  //     //   console.log(
+  //     //     "MY SENT filter 목록",
+  //     //     response.data.filter((SENT) => SENT.profile.user.toString() === userId)
+  //     //   );
+  //     setMyCOMMENTS(
+  //       response.data.filter((SENT) => SENT.profile.user.toString() === userId)
+  //     );
+  //   } catch (e) {
+  //     console.log("SENT 목록 조회 실패", e);
+  //     setError(e);
+  //   }
+  //   setLoading(false);
+  // };
 
   useEffect(() => {
     const userId = localStorage.getItem("user_id");
-    userId ? getMySENTS(userId) : navigate("/login");
+    getMySENTS(userId);
   }, []);
 
   return (
@@ -41,11 +67,11 @@ export default function MySent() {
       <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
       {error && <p>error</p>}
       {loading && <p>loading...</p>}
-      {mySENTS &&
-        mySENTS.map((post) => (
-          <PostSection key={post.pk}>
-            <div key={post.pk}>
-              <PostTitle>{post.title}</PostTitle>
+      {myCOMMENTS &&
+        myCOMMENTS.map((comment) => (
+          <PostSection key={comment.pk}>
+            <div key={comment.pk}>
+              <p>{comment.text}</p>
               {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
               {/* <p>{post.published_date}</p> */}
             </div>
@@ -55,11 +81,11 @@ export default function MySent() {
             ></ButtonImg>
           </PostSection>
         ))}
-      <Button onClick={navigateToPostSent}>카테고리 만들기</Button>
-      {/* <button onClick={postPost}>임의로 post 버튼</button> */}
+      <Button onClick={navigateToPostComment}>SENT 추가하기✏️</Button>
     </MainWrapper>
   );
 }
+
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -67,6 +93,15 @@ const MainWrapper = styled.div`
   align-items: center;
   height: 800px;
   color: white;
+`;
+
+const ButtonImg = styled.img`
+  width: 4.5rem;
+  transform: rotate(180deg);
+`;
+
+const ButtonImg2 = styled.img`
+  width: 4.5rem;
 `;
 
 const PostSection = styled.div`
@@ -89,13 +124,4 @@ const PostTitle = styled.p`
   font-size: 3rem;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
-`;
-
-const ButtonImg = styled.img`
-  width: 4.5rem;
-  transform: rotate(180deg);
-`;
-
-const ButtonImg2 = styled.img`
-  width: 4.5rem;
 `;
