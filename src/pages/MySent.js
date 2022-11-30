@@ -3,6 +3,7 @@ import APIs from "../api/Main";
 import styled from "styled-components";
 import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
+import COLORS from "../styles/Colors";
 
 export default function MySent() {
   const [mySENTS, setMySENTS] = useState(null);
@@ -36,6 +37,10 @@ export default function MySent() {
     userId ? getMySENTS(userId) : navigate("/login");
   }, []);
 
+  const navigateToPostDetail = (pk) => {
+    navigate(`/mysent/${pk}`);
+  };
+
   return (
     <MainWrapper>
       <PageTop>
@@ -52,7 +57,7 @@ export default function MySent() {
       {loading && <p>loading...</p>}
       {mySENTS &&
         mySENTS.map((post) => (
-          <PostSection key={post.pk}>
+          <PostSection key={post.pk} colorOption={COLORS[post.color]}>
             <div key={post.pk}>
               <PostTitle>{post.title}</PostTitle>
               {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
@@ -61,6 +66,7 @@ export default function MySent() {
             <ButtonImg
               src="./images/backbutton.png"
               alt="sent_button"
+              onClick={() => navigateToPostDetail(post.pk)}
             ></ButtonImg>
           </PostSection>
         ))}
@@ -72,6 +78,8 @@ export default function MySent() {
   );
 }
 const MainWrapper = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -117,7 +125,7 @@ const PostSection = styled.div`
   margin-top: 0rem;
   margin-bottom: 2rem;
   padding: 3rem;
-  background-color: lightblue;
+  background-color: ${({ colorOption }) => colorOption};
   color: black;
   width: 40rem;
   height: 12rem;

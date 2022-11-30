@@ -35,7 +35,7 @@ export default function PostComment() {
     await APIs.postComment(postInfo, token)
       .then((response) => {
         console.log("Comment 등록 결과", response);
-        navigate("/mysent");
+        navigate("/mysent/" + id);
       })
       .catch((error) => {
         console.log("Comment 등록 에러", error);
@@ -71,6 +71,8 @@ export default function PostComment() {
 }
 
 const MainWrapper = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

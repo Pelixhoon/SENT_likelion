@@ -51,9 +51,10 @@ export default function PostSent() {
   return (
     <MainWrapper>
       <PageTop>
-        <button>
-          <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
-        </button>
+        <ButtonImg2
+          src="./images/backbutton.png"
+          alt="sent_button"
+        ></ButtonImg2>
         <PageTitleDiv>
           <PageTitle>SENT 만들기</PageTitle>
         </PageTitleDiv>

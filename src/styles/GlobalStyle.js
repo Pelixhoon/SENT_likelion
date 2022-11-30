@@ -69,6 +69,8 @@ const GlobalStyleWrapper = createGlobalStyle`
 
 const Container = styled.div`
   position: relative;
+  overflow: hidden;
+
   @media (min-width: 450px) {
     background-color: #f0f0f050;
   }
