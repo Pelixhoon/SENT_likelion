@@ -63,7 +63,8 @@ export default function Signup() {
             name="username"
             onChange={onFormChange}
             value={userInfo.username}
-            placeholder="적당한 아이디를 입력하세요."
+            placeholder="5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.
+            "
           ></IDPWInput>
           <IDPWTitle>이메일</IDPWTitle>
           <IDPWInput
@@ -77,14 +78,14 @@ export default function Signup() {
             name="password"
             onChange={onFormChange}
             value={userInfo.password}
-            placeholder="적당한 비밀번호를 입력하세요."
+            placeholder="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요."
           ></IDPWInput>
           <IDPWTitle>비밀번호 확인</IDPWTitle>
           <IDPWInput
             name="password2"
             onChange={onFormChange}
             value={userInfo.password2}
-            placeholder="비밀번호를 확인하세요."
+            placeholder="비밀번호를 다시 입력하세요."
           ></IDPWInput>
         </LoginSection>
         <Button type="submit" disabled={valid}>
@@ -120,13 +121,13 @@ const LoginSection = styled.div`
 const IDPWInput = styled.input`
   height: 3.8rem;
   margin-bottom: 2.5rem;
-  color:white;
+  color: white;
   font-size: 2rem;
-  background-color:rgba(25, 25, 25, 1);
-  border:0.3rem;
+  background-color: rgba(25, 25, 25, 1);
+  border: 0.3rem;
   border-bottom-style: solid;
-  border-color:rgba(25, 25, 25, 1);
-  border-bottom-color:rgba(78, 25, 255, 1);
+  border-color: rgba(25, 25, 25, 1);
+  border-bottom-color: rgba(78, 25, 255, 1);
 `;
 
 const IDPWTitle = styled.p`
@@ -148,5 +149,5 @@ const SignupSection = styled.div`
 
 const SubParagraph = styled.p`
   font-size: 1.5rem;
-  color:rgba(87, 87, 87, 1);
+  color: rgba(87, 87, 87, 1);
 `;
