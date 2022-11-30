@@ -5,7 +5,7 @@ const API_URL = {
   SIGNUP: `${BASE_URL}/user/userRegister/`,
   POST_SENT: `${BASE_URL}/posts/`,
   PROFILE: `${BASE_URL}/user/profile/`,
-  SENTLIST: `${BASE_URL}/posts/`,
+  GET_SENTS: `${BASE_URL}/posts/`,
 };
 
 export { BASE_URL, API_URL };

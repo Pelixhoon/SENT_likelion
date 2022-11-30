@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import APIs from "../api/Main";
 import styled from "styled-components";
-import axios from "axios";
 import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function MySent() {
   const [posts, setPosts] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -17,21 +17,22 @@ export default function MySent() {
   const navigateToSentList = () => {
     navigate("/mysentlist");
   };
+  const fetchPosts = async () => {
+    try {
+      // setError(null);
+      // setPosts(null);
+      // setLoading(true);
+      const response = await APIs.getSENTS();
+      console.log("SENT 목록", response.data);
+      setPosts(response.data);
+    } catch (e) {
+      console.log("SENT 목록 조회 실패", e);
+      setError(e);
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setError(null);
-        setPosts(null);
-        setLoading(true);
-        const response = await axios.get("http://127.0.0.1:8000/posts/");
-        console.log("response", response.data);
-        setPosts(response.data);
-      } catch (e) {
-        setError(e);
-      }
-      setLoading(false);
-    };
     fetchPosts();
   }, []);
 
