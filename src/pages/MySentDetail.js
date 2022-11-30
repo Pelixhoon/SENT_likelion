@@ -64,7 +64,7 @@ export default function MySentDetail(props) {
 
   return (
     <MainWrapper>
-      <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
+      <ButtonImg2 src="./images/backbutton.png" alt="bbutton"></ButtonImg2>
       {error && <p>error</p>}
       {loading && <p>loading...</p>}
       {myCOMMENTS &&
@@ -77,7 +77,7 @@ export default function MySentDetail(props) {
             </div>
             <ButtonImg
               src="./images/backbutton.png"
-              alt="sent_button"
+              alt="backbutton"
             ></ButtonImg>
           </PostSection>
         ))}
