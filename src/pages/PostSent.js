@@ -40,7 +40,7 @@ export default function PostSent() {
     await APIs.postSENT(SENTinfo, token)
       .then((response) => {
         console.log("SENT 등록 결과", response);
-        navigate("/");
+        navigate("/mysent");
       })
       .catch((error) => {
         console.log("SENT 등록 에러", error);
@@ -83,7 +83,7 @@ export default function PostSent() {
           </ChoiceColorSelect>
         </FormSection>
         <Button type="submit" disabled={valid}>
-            만들기
+          만들기
         </Button>
       </form>
     </MainWrapper>
@@ -135,20 +135,18 @@ const FormSection = styled.div`
   height: 50rem;
 `;
 
-const ChoiceTitle = styled.p`
-
-`;
+const ChoiceTitle = styled.p``;
 
 const ChoiceInputName = styled.input`
   height: 3.8rem;
   margin-bottom: 2.5rem;
   color: white;
   font-size: 2rem;
-  background-color:rgba(25, 25, 25, 1);
-  border:0.3rem;
+  background-color: rgba(25, 25, 25, 1);
+  border: 0.3rem;
   border-bottom-style: solid;
-  border-color:rgba(25, 25, 25, 1);
-  border-bottom-color:rgba(78, 25, 255, 1);
+  border-color: rgba(25, 25, 25, 1);
+  border-bottom-color: rgba(78, 25, 255, 1);
 `;
 
 const ChoiceColorSelect = styled.select`
@@ -156,9 +154,9 @@ const ChoiceColorSelect = styled.select`
   margin-bottom: 2.5rem;
   color: white;
   font-size: 2rem;
-  background-color:rgba(25, 25, 25, 1);
+  background-color: rgba(25, 25, 25, 1);
   border: 0.3rem;
   border-bottom-style: solid;
-  border-color:rgba(25, 25, 25, 1);
-  border-bottom-color:rgba(78, 25, 255, 1);
+  border-color: rgba(25, 25, 25, 1);
+  border-bottom-color: rgba(78, 25, 255, 1);
 `;

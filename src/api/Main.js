@@ -51,12 +51,36 @@ const getSENTS = async () => {
   return response;
 };
 
+// 전체 Comment를 get하는 함수
+const getCOMMENTS = async () => {
+  const response = await axios.get(API_URL.GET_COMMENTS);
+  return response;
+};
+
+const postComment = async (CommentInfo, token) => {
+  const response = await axios.post(
+    API_URL.POST_COMMENT,
+    {
+      post: CommentInfo.pk,
+      text: CommentInfo.text,
+    },
+    {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    }
+  );
+  return response;
+};
+
 const APIs = {
   login,
   signup,
   postSENT,
   getSENTS,
   getProfile,
+  getCOMMENTS,
+  postComment,
 };
 
 export default APIs;

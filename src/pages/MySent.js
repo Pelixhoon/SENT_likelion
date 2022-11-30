@@ -14,9 +14,6 @@ export default function MySent() {
     navigate("/postsent");
   };
 
-  const navigateToSentList = () => {
-    navigate("/mysentlist");
-  };
   const getMySENTS = async (userId) => {
     try {
       const response = await APIs.getSENTS();
@@ -42,9 +39,10 @@ export default function MySent() {
   return (
     <MainWrapper>
       <PageTop>
-        <button>
-          <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
-        </button>
+        <ButtonImg2
+          src="./images/backbutton.png"
+          alt="sent_button"
+        ></ButtonImg2>
         <PageTitleDiv>
           <PageTitle>MY SENT</PageTitle>
         </PageTitleDiv>
@@ -54,12 +52,12 @@ export default function MySent() {
       {loading && <p>loading...</p>}
       {mySENTS &&
         mySENTS.map((post) => (
-          <PostSection>
+          <PostSection key={post.pk}>
             <div key={post.pk}>
               <PostTitle>{post.title}</PostTitle>
               {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
               {/* <p>{post.published_date}</p> */}
-            </div>            
+            </div>
             <ButtonImg
               src="./images/backbutton.png"
               alt="sent_button"
@@ -68,7 +66,7 @@ export default function MySent() {
         ))}
       <DivForStaticButton>
         <Button onClick={navigateToPostSent}>카테고리 만들기</Button>
-        </DivForStaticButton>
+      </DivForStaticButton>
       {/* <button onClick={postPost}>임의로 post 버튼</button> */}
     </MainWrapper>
   );
@@ -140,4 +138,3 @@ const ButtonImg = styled.img`
   width: 4.5rem;
   transform: rotate(180deg);
 `;
-

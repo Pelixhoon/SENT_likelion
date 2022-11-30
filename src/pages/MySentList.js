@@ -9,7 +9,6 @@ export default function MySentList() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-
   const navigateToWriteSent = () => {
     navigate("/writesent");
   };
