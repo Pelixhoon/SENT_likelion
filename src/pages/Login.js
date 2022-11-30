@@ -113,7 +113,7 @@ const LoginTitle = styled.div`
   font-size: 3.2rem;
   width: 45rem;
   padding: 6rem;
-  margin-top: 8rem;
+  margin-top: 4rem;
 `;
 
 const SignupSection = styled.div`

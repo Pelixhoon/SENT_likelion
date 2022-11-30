@@ -56,7 +56,7 @@ export default function Home() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
   color: white;

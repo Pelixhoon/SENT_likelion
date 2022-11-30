@@ -20,14 +20,14 @@ export default function Main() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
 `;
 
 const LogoImg = styled.img`
   width: 15rem;
-  margin-top: 8rem;
+  margin-top: 20rem;
 `;
 
 const TitleParagrpah = styled.p`
@@ -49,7 +49,7 @@ function blinkingEffect() {
 const ClickMent = styled.p`
   color: gray;
   font-size: 2rem;
-  margin-top: 20rem;
+  margin-top: 17rem;
   animation: ${blinkingEffect} 2.5s linear infinite;
   }
 `;
