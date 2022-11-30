@@ -50,7 +50,13 @@ export default function PostSent() {
 
   return (
     <MainWrapper>
-      <PageTitle>SENT 만들기</PageTitle>
+      <PageTop>
+        <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
+        <PageTitleDiv>
+          <PageTitle>SENT 만들기</PageTitle>
+        </PageTitleDiv>
+      </PageTop>
+
       <form onSubmit={handlePostSent}>
         <FormSection>
           <ChoiceTitle>SENT 이름</ChoiceTitle>
@@ -88,6 +94,28 @@ const MainWrapper = styled.div`
   align-items: center;
   height: 800px;
   color: white;
+`;
+
+const PageTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 45rem;
+`;
+
+const ButtonImg2 = styled.img`
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-left: 2.5rem;
+`;
+
+const PageTitleDiv = styled.div`
+  width: 31rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const PageTitle = styled.h1`
