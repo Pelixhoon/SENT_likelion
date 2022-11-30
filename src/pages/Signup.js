@@ -28,17 +28,7 @@ export default function Signup() {
   const navigate = useNavigate();
   const [isEnable, setIsEnable] = useState(true);
 
-  // const onInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUserInfo((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  //   validateInput(e);
-  // };
-
   const onFormChange = (e) => {
-    // console.log(e.target.name, e.target.value);
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
     validateInput(e);
@@ -48,7 +38,6 @@ export default function Signup() {
     let { name, value } = e.target;
     setError((prev) => {
       const stateObj = { ...prev, [name]: "" };
-      console.log(name);
       switch (name) {
         case "password2":
           if (userInfo.password2 && value === userInfo.password) {
