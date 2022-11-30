@@ -81,7 +81,7 @@ const PinkImg = styled.img`
 
 const BoxMysentContent = styled.div`
   width: 39.7rem;
-  margin-top: -1.5rem;
+  margin-top: -2rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
