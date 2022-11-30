@@ -34,6 +34,7 @@ const postSENT = async (SENTInfo, token) => {
     {
       title: SENTInfo.title,
       category: SENTInfo.category,
+      color: SENTInfo.color,
     },
     {
       headers: {
