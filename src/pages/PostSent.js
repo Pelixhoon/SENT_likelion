@@ -6,17 +6,24 @@ import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function PostSent() {
+  const [token, setToken] = useState(null);
   const [posts, setPosts] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [SENTinfo, setSENTinfo] = useState({
     title: "",
+    category: "",
     color: "",
   });
   const navigate = useNavigate();
   const [isEnable, setIsEnable] = useState(true);
 
   const valid = !(SENTinfo.title && SENTinfo.color);
+
+  // 컴포넌트 마운트 시, 로컬스토리지에서 토큰 가져오기
+  useEffect(() => {
+    localStorage.getItem("token") && setToken(localStorage.getItem("token"));
+  }, []);
 
   useEffect(() => {
     SENTinfo.title && SENTinfo.color ? setIsEnable(false) : setIsEnable(true);
@@ -30,7 +37,7 @@ export default function PostSent() {
   //Post를 post하는 함수
   const handlePostSent = async (e) => {
     e.preventDefault();
-    await APIs.postSENT(SENTinfo)
+    await APIs.postSENT(SENTinfo, token)
       .then((response) => {
         console.log("SENT 등록 결과", response);
         navigate("/");
