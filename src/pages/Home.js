@@ -46,7 +46,9 @@ export default function Home() {
               제일 많이 SENT를 남겼어요
             </BoxCharttext>
           </BoxChartText>
-          <Chart></Chart>
+          <Chart>
+            <ChartExImg src="./images/ChartEx.png"></ChartExImg>
+          </Chart>
         </BoxChartContent>
       </Box>
     </MainWrapper>
@@ -147,5 +149,9 @@ const SentSpan = styled.span`
 
 const Chart = styled.div`
   height: 20rem;
-  background-color: gray;
+`;
+
+const ChartExImg = styled.img`
+  padding-top: 2rem;
+  height: 20rem;
 `;
