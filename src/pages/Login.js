@@ -78,7 +78,7 @@ export default function Login() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
   color: white;
@@ -90,6 +90,7 @@ const LoginSection = styled.div`
   padding: 6rem;
   font-size: 2rem;
   width: 45rem;
+  height: 38rem;
 `;
 
 const IDPWInput = styled.input`
@@ -112,6 +113,7 @@ const LoginTitle = styled.div`
   font-size: 3.2rem;
   width: 45rem;
   padding: 6rem;
+  margin-top: 8rem;
 `;
 
 const SignupSection = styled.div`
