@@ -48,11 +48,10 @@ export default function Signup() {
     let { name, value } = e.target;
     setError((prev) => {
       const stateObj = { ...prev, [name]: "" };
-      console.log(name);
       switch (name) {
         case "password2":
           if (userInfo.password2 && value === userInfo.password) {
-            stateObj[name] = "비밀번호가 일치해요!";
+            stateObj[name] = "비밀번호가 일치해요 :)";
           } else if (userInfo.password && value !== userInfo.password2) {
             stateObj[name] = "비밀번호가 일치하지 않아요!";
           }
@@ -91,7 +90,17 @@ export default function Signup() {
       })
       .catch((error) => {
         console.log("회원가입 실패", error);
-        setLoginError(error);
+        setLoginError(error.response.data);
+        let e = error.response.data;
+        let errorMsg = "";
+        // console.log(error);
+        for (var key in e) {
+          if (e.hasOwnProperty(key)) {
+            errorMsg += e[key] + "\n";
+          }
+        }
+        console.log(errorMsg);
+        alert(errorMsg);
       });
   };
 
@@ -106,14 +115,14 @@ export default function Signup() {
             onChange={onFormChange}
             onBlur={validateInput}
             value={userInfo.username}
-            placeholder="적당한 아이디를 입력하세요."
+            placeholder="영문, 숫자 8자 이상 입력해주세요."
           ></IDPWInput>
           <IDPWTitle>이메일</IDPWTitle>
           <IDPWInput
             name="email"
             onChange={onFormChange}
             value={userInfo.email}
-            placeholder="이메일을 입력하세요."
+            placeholder="이메일을 입력해주세요."
           ></IDPWInput>
           <IDPWTitle>비밀번호</IDPWTitle>
           <IDPWInput
@@ -121,11 +130,8 @@ export default function Signup() {
             type="password"
             onChange={onFormChange}
             value={userInfo.password}
-<<<<<<< HEAD
             onBlur={validateInput}
-=======
-            placeholder="적당한 비밀번호를 입력하세요."
->>>>>>> f5186aee078d56801ae1f45a944374a8aaea7cf1
+            placeholder="영문, 숫자 8자 이상 입력해주세요."
           ></IDPWInput>
           <IDPWTitle>비밀번호 확인</IDPWTitle>
           <IDPWInput
@@ -133,13 +139,12 @@ export default function Signup() {
             type="password"
             onChange={onFormChange}
             value={userInfo.password2}
-<<<<<<< HEAD
             onBlur={validateInput}
-=======
-            placeholder="비밀번호를 확인하세요."
->>>>>>> f5186aee078d56801ae1f45a944374a8aaea7cf1
+            placeholder="비밀번호를 다시 한번 입력해주세요."
           ></IDPWInput>
-          {error.password2 && <span className="err">{error.password2}</span>}
+          <PwValidation>
+            {error.password2 && <span className="err">{error.password2}</span>}
+          </PwValidation>
         </LoginSection>
         <Button type="submit" disabled={valid}>
           회원가입
@@ -181,6 +186,9 @@ const IDPWInput = styled.input`
   border-bottom-style: solid;
   border-color: rgba(25, 25, 25, 1);
   border-bottom-color: rgba(78, 25, 255, 1);
+  &::placeholder {
+    font-size: 1.5rem;
+  }
 `;
 
 const IDPWTitle = styled.p`
@@ -203,4 +211,10 @@ const SignupSection = styled.div`
 const SubParagraph = styled.p`
   font-size: 1.5rem;
   color: rgba(87, 87, 87, 1);
+`;
+
+const PwValidation = styled.div`
+  font-size: 1.5rem;
+  margin-top: -1.5rem;
+  margin-bottom: 2.5rem;
 `;
