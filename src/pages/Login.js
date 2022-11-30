@@ -55,6 +55,7 @@ export default function Login() {
           ></IDPWInput>
           <IDPWTitle>비밀번호</IDPWTitle>
           <IDPWInput
+            type="password"
             name="password"
             onChange={onFormChange}
             value={userInfo.password}
