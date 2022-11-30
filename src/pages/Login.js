@@ -56,6 +56,7 @@ export default function Login() {
           ></IDPWInput>
           <IDPWTitle>비밀번호</IDPWTitle>
           <IDPWInput
+            type="password"
             name="password"
             onChange={onFormChange}
             value={userInfo.password}
@@ -95,13 +96,13 @@ const LoginSection = styled.div`
 const IDPWInput = styled.input`
   height: 3.8rem;
   margin-bottom: 2.5rem;
-  color:white;
+  color: white;
   font-size: 2rem;
-  background-color:rgba(25, 25, 25, 1);
-  border:0.3rem;
+  background-color: rgba(25, 25, 25, 1);
+  border: 0.3rem;
   border-bottom-style: solid;
-  border-color:rgba(25, 25, 25, 1);
-  border-bottom-color:rgba(78, 25, 255, 1);
+  border-color: rgba(25, 25, 25, 1);
+  border-bottom-color: rgba(78, 25, 255, 1);
 `;
 
 const IDPWTitle = styled.p`
@@ -123,5 +124,5 @@ const SignupSection = styled.div`
 
 const SubParagraph = styled.p`
   font-size: 1.5rem;
-  color:rgba(87, 87, 87, 1);
+  color: rgba(87, 87, 87, 1);
 `;

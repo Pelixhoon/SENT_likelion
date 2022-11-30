@@ -15,9 +15,56 @@ export default function Signup() {
     password: "",
     password2: "",
   });
+
+  const [error, setError] = useState({
+    uesrname: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const [, setLoginError] = useState(null);
+
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
   const [isEnable, setIsEnable] = useState(true);
+
+  // const onInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setUserInfo((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  //   validateInput(e);
+  // };
+
+  const onFormChange = (e) => {
+    // console.log(e.target.name, e.target.value);
+    const { name, value } = e.target;
+    setUserInfo({ ...userInfo, [name]: value });
+    validateInput(e);
+  };
+
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: "" };
+      console.log(name);
+      switch (name) {
+        case "password2":
+          if (userInfo.password2 && value === userInfo.password) {
+            stateObj[name] = "비밀번호가 일치해요!";
+          } else if (userInfo.password && value !== userInfo.password2) {
+            stateObj[name] = "비밀번호가 일치하지 않아요!";
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      return stateObj;
+    });
+  };
 
   useEffect(() => {
     userInfo.username &&
@@ -35,11 +82,6 @@ export default function Signup() {
     userInfo.password2
   );
 
-  const onFormChange = (e) => {
-    // console.log(e.target.name, e.target.value);
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-  };
-
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     await APIs.signup(userInfo)
@@ -49,7 +91,7 @@ export default function Signup() {
       })
       .catch((error) => {
         console.log("회원가입 실패", error);
-        setError(error);
+        setLoginError(error);
       });
   };
 
@@ -62,6 +104,7 @@ export default function Signup() {
           <IDPWInput
             name="username"
             onChange={onFormChange}
+            onBlur={validateInput}
             value={userInfo.username}
           ></IDPWInput>
           <IDPWTitle>이메일</IDPWTitle>
@@ -73,15 +116,20 @@ export default function Signup() {
           <IDPWTitle>비밀번호</IDPWTitle>
           <IDPWInput
             name="password"
+            type="password"
             onChange={onFormChange}
             value={userInfo.password}
+            onBlur={validateInput}
           ></IDPWInput>
           <IDPWTitle>비밀번호 확인</IDPWTitle>
           <IDPWInput
             name="password2"
+            type="password"
             onChange={onFormChange}
             value={userInfo.password2}
+            onBlur={validateInput}
           ></IDPWInput>
+          {error.password2 && <span className="err">{error.password2}</span>}
         </LoginSection>
         <Button type="submit" disabled={valid}>
           회원가입
@@ -116,13 +164,13 @@ const LoginSection = styled.div`
 const IDPWInput = styled.input`
   height: 3.8rem;
   margin-bottom: 2.5rem;
-  color:white;
+  color: white;
   font-size: 2rem;
-  background-color:rgba(25, 25, 25, 1);
-  border:0.3rem;
+  background-color: rgba(25, 25, 25, 1);
+  border: 0.3rem;
   border-bottom-style: solid;
-  border-color:rgba(25, 25, 25, 1);
-  border-bottom-color:rgba(78, 25, 255, 1);
+  border-color: rgba(25, 25, 25, 1);
+  border-bottom-color: rgba(78, 25, 255, 1);
 `;
 
 const IDPWTitle = styled.p`
@@ -144,5 +192,5 @@ const SignupSection = styled.div`
 
 const SubParagraph = styled.p`
   font-size: 1.5rem;
-  color:rgba(87, 87, 87, 1);
+  color: rgba(87, 87, 87, 1);
 `;
