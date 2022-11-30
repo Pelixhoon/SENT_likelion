@@ -28,17 +28,7 @@ export default function Signup() {
   const navigate = useNavigate();
   const [isEnable, setIsEnable] = useState(true);
 
-  // const onInputChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setUserInfo((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  //   validateInput(e);
-  // };
-
   const onFormChange = (e) => {
-    // console.log(e.target.name, e.target.value);
     const { name, value } = e.target;
     setUserInfo({ ...userInfo, [name]: value });
     validateInput(e);
@@ -140,7 +130,7 @@ export default function Signup() {
             onChange={onFormChange}
             value={userInfo.password2}
             onBlur={validateInput}
-            placeholder="비밀번호를 다시 한번 입력해주세요."
+            placeholder="비밀번호를 다시 한 번 입력해주세요."
           ></IDPWInput>
           <PwValidation>
             {error.password2 && <span className="err">{error.password2}</span>}
