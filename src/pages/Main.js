@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export default function Main() {
   const navigate = useNavigate();
@@ -10,8 +10,9 @@ export default function Main() {
 
   return (
     <MainWrapper onClick={navigateToLogin}>
-      <img src="/images/logo.png" alt="logo" />
+      <LogoImg src="/images/logo.png" alt="logo" />
       <TitleParagrpah>SENT</TitleParagrpah>
+      <ClickMent>시작하려면 클릭하세요.</ClickMent>
     </MainWrapper>
   );
 }
@@ -24,10 +25,31 @@ const MainWrapper = styled.div`
   height: 800px;
 `;
 
+const LogoImg = styled.img`
+  width: 15rem;
+  margin-top: 8rem;
+`;
+
 const TitleParagrpah = styled.p`
   color: white;
   font-weight: 800;
   font-size: 7rem;
   font: san-serif;
-  padding: 5rem;
+  padding: 3rem;
+`;
+
+function blinkingEffect() {
+  return keyframes`
+    50% {
+      opacity: 0;
+    }
+  `;
+}
+
+const ClickMent = styled.p`
+  color: gray;
+  font-size: 2rem;
+  margin-top: 20rem;
+  animation: ${blinkingEffect} 2.5s linear infinite;
+  }
 `;
