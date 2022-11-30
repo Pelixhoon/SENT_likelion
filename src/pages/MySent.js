@@ -38,7 +38,16 @@ export default function MySent() {
 
   return (
     <MainWrapper>
-      <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
+      <PageTop>
+        <ButtonImg2
+          src="./images/backbutton.png"
+          alt="sent_button"
+        ></ButtonImg2>
+        <PageTitleDiv>
+          <PageTitle>MY SENT</PageTitle>
+        </PageTitleDiv>
+      </PageTop>
+
       {error && <p>error</p>}
       {loading && <p>loading...</p>}
       {mySENTS &&
@@ -55,7 +64,9 @@ export default function MySent() {
             ></ButtonImg>
           </PostSection>
         ))}
-      <Button onClick={navigateToPostSent}>카테고리 만들기</Button>
+      <DivForStaticButton>
+        <Button onClick={navigateToPostSent}>카테고리 만들기</Button>
+      </DivForStaticButton>
       {/* <button onClick={postPost}>임의로 post 버튼</button> */}
     </MainWrapper>
   );
@@ -63,20 +74,47 @@ export default function MySent() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
   color: white;
 `;
 
+const PageTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 45rem;
+`;
+
+const ButtonImg2 = styled.img`
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-left: 2.5rem;
+`;
+
+const PageTitleDiv = styled.div`
+  width: 31rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PageTitle = styled.h1`
+  font-size: 3rem;
+  margin: 6rem;
+`;
+
 const PostSection = styled.div`
   display: flex;
   flex-direction: column 1rem;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   border: solid;
   border-radius: 2rem;
-  margin-top: 2rem;
+  margin-top: 0rem;
   margin-bottom: 2rem;
   padding: 3rem;
   background-color: lightblue;
@@ -91,11 +129,12 @@ const PostTitle = styled.p`
   font-weight: 700;
 `;
 
+const DivForStaticButton = styled.div`
+  position: fixed;
+  margin-top: 65.563rem;
+`;
+
 const ButtonImg = styled.img`
   width: 4.5rem;
   transform: rotate(180deg);
-`;
-
-const ButtonImg2 = styled.img`
-  width: 4.5rem;
 `;

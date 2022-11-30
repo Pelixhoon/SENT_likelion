@@ -17,7 +17,9 @@ export default function Home() {
         color="white"
         fontSize="2.5rem"
       >
-        <PinkImg src="./images/pink2.png" alt="sent_pink"></PinkImg>
+        <PinkImgDiv>
+          <PinkImg src="./images/pink2.png" alt="sent_pink"></PinkImg>
+        </PinkImgDiv>
         <BoxMysentContent>
           <BoxWord>MY SENT&nbsp;&nbsp;</BoxWord>
           <ButtonImg
@@ -35,10 +37,18 @@ export default function Home() {
             <option>최근 1년 간</option>
           </SelectWhen>
           <BoxChartText>
-            <SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에
+            <BoxCharttext>
+              <SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에
+            </BoxCharttext>
           </BoxChartText>
-          <BoxChartText>제일 많이 SENT를 남겼어요</BoxChartText>
-          <Chart></Chart>
+          <BoxChartText>
+            <BoxCharttext>
+              제일 많이 SENT를 남겼어요
+            </BoxCharttext>
+          </BoxChartText>
+          <Chart>
+            <ChartExImg src="./images/ChartEx.png"></ChartExImg>
+          </Chart>
         </BoxChartContent>
       </Box>
     </MainWrapper>
@@ -48,7 +58,7 @@ export default function Home() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
   color: white;
@@ -60,12 +70,12 @@ const StyledParagraph = styled.p`
   font-weight: 800;
   width: 45rem;
   padding: 1rem 3rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
 `;
 
 const Box = styled.button`
   font-size: ${(props) => props.fontSize};
-  height: 33rem;
+  height: 29rem;
   width: 39.7rem;
   color: ${(props) => props.color};
   border: none;
@@ -73,9 +83,12 @@ const Box = styled.button`
   border-radius: 1rem;
 `;
 
+const PinkImgDiv = styled.div`
+`;
+
 const PinkImg = styled.img`
-  margin-top: -1rem;
-  width: 30rem;
+  margin-top: 2rem;
+  width: 34rem;
   opacity: 0.8;
 `;
 
@@ -88,7 +101,7 @@ const BoxMysentContent = styled.div`
   align-items: center;
   padding-right: 2rem;
   position: relative;
-  bottom: 1rem;
+  top: -5rem;
 `;
 
 const BoxWord = styled.p`
@@ -123,11 +136,22 @@ const BoxChartText = styled.p`
   margin-top: 0.3rem;
 `;
 
+const BoxCharttext = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+`;
+
 const SentSpan = styled.span`
   font-size: 2.8rem;
 `;
 
 const Chart = styled.div`
   height: 20rem;
-  background-color: gray;
+`;
+
+const ChartExImg = styled.img`
+  padding-top: 2rem;
+  height: 20rem;
 `;
