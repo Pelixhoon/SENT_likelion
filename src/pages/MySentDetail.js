@@ -87,6 +87,8 @@ export default function MySentDetail(props) {
 }
 
 const MainWrapper = styled.div`
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
