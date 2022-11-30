@@ -42,7 +42,9 @@ export default function MySent() {
   return (
     <MainWrapper>
       <PageTop>
-        <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
+        <button>
+          <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
+        </button>
         <PageTitleDiv>
           <PageTitle>MY SENT</PageTitle>
         </PageTitleDiv>
