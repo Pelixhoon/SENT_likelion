@@ -68,7 +68,7 @@ export default function Login() {
         </Button>
       </form>
       <SignupSection>
-        <SubParagraph>SENT가 처음이세요?&nbsp;&nbsp;&nbsp;</SubParagraph>
+        <SubParagraph>SENT가 처음이신가요?&nbsp;&nbsp;&nbsp;</SubParagraph>
         <NavLink to="/signup">회원가입</NavLink>
       </SignupSection>
     </MainWrapper>
