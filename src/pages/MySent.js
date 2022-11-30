@@ -5,7 +5,7 @@ import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function MySent() {
-  const [posts, setPosts] = useState(null);
+  const [mySENTS, setMySENTS] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -17,14 +17,16 @@ export default function MySent() {
   const navigateToSentList = () => {
     navigate("/mysentlist");
   };
-  const fetchPosts = async () => {
+  const getMySENTS = async (userId) => {
     try {
-      // setError(null);
-      // setPosts(null);
-      // setLoading(true);
       const response = await APIs.getSENTS();
-      console.log("SENT 목록", response.data);
-      setPosts(response.data);
+      // console.log(
+      //   "MY SENT filter 목록",
+      //   response.data.filter((SENT) => SENT.profile.user.toString() === userId)
+      // );
+      setMySENTS(
+        response.data.filter((SENT) => SENT.profile.user.toString() === userId)
+      );
     } catch (e) {
       console.log("SENT 목록 조회 실패", e);
       setError(e);
@@ -33,7 +35,8 @@ export default function MySent() {
   };
 
   useEffect(() => {
-    fetchPosts();
+    const userId = localStorage.getItem("user_id");
+    userId ? getMySENTS(userId) : navigate("/login");
   }, []);
 
   return (
@@ -42,12 +45,12 @@ export default function MySent() {
 
       {error && <p>error</p>}
       {loading && <p>loading...</p>}
-      {posts &&
-        posts.map((post) => (
+      {mySENTS &&
+        mySENTS.map((post) => (
           <PostSection>
             <div key={post.pk}>
-              <PostTitle>{post.title}</PostTitle>
-              {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
+              <h1>{post.title}</h1>
+              <Button onClick={navigateToSentList}>SENT목록 보기</Button>
               {/* <p>{post.published_date}</p> */}
             </div>
             <ButtonImg

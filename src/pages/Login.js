@@ -5,7 +5,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../styles/Button";
 
 // -- [] 로그인 실패시, 예외처리하기
-
 export default function Login() {
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -34,6 +33,7 @@ export default function Login() {
       .then((response) => {
         console.log("로그인 성공", response);
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user_id", response.data.user_id);
         navigate("/home");
       })
       .catch((error) => {
