@@ -37,9 +37,15 @@ export default function Home() {
             <option>최근 1년 간</option>
           </SelectWhen>
           <BoxChartText>
-            <SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에
+            <BoxCharttext>
+              <SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에
+            </BoxCharttext>
           </BoxChartText>
-          <BoxChartText>제일 많이 SENT를 남겼어요</BoxChartText>
+          <BoxChartText>
+            <BoxCharttext>
+              제일 많이 SENT를 남겼어요
+            </BoxCharttext>
+          </BoxChartText>
           <Chart></Chart>
         </BoxChartContent>
       </Box>
@@ -126,6 +132,13 @@ const BoxChartText = styled.p`
   font-size: 1.6rem;
   font-weight: bold;
   margin-top: 0.3rem;
+`;
+
+const BoxCharttext = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
 `;
 
 const SentSpan = styled.span`
