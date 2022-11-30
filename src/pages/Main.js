@@ -27,6 +27,7 @@ const MainWrapper = styled.div`
 
 const LogoImg = styled.img`
   width: 15rem;
+  margin-top: 8rem;
 `;
 
 const TitleParagrpah = styled.p`
@@ -34,7 +35,7 @@ const TitleParagrpah = styled.p`
   font-weight: 800;
   font-size: 7rem;
   font: san-serif;
-  padding: 5rem;
+  padding: 3rem;
 `;
 
 function blinkingEffect() {
@@ -48,6 +49,7 @@ function blinkingEffect() {
 const ClickMent = styled.p`
   color: gray;
   font-size: 2rem;
+  margin-top: 20rem;
   animation: ${blinkingEffect} 2.5s linear infinite;
   }
 `;
