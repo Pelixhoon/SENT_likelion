@@ -7,6 +7,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import MySent from "./pages/MySent";
+import PostSent from "./pages/PostSent";
+import MySentList from "./pages/MySentList";
+import WriteSent from "./pages/WriteSent";
 
 const rootNode = document.getElementById("root");
 
@@ -19,7 +22,10 @@ ReactDOM.createRoot(rootNode).render(
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/home" element={<Home />} />
-          <Route paht="/mysent" element={<MySent />} />
+          <Route path="/mysent" element={<MySent />} />
+          <Route path="/mysentlist" element={<MySentList />} />
+          <Route path="/postsent" element={<PostSent />} />
+          <Route path="/writesent" element={<WriteSent />} />
         </Routes>
       </BrowserRouter>
     </GlobalStyle>

@@ -4,50 +4,44 @@ import axios from "axios";
 import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
 
-export default function MySent() {
-  const [posts, setPosts] = useState(null);
+export default function MySentList() {
+  const [comments, setComments] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const navigateToPostSent = () => {
-    navigate("/postsent");
-  };
-
-  const navigateToSentList = () => {
-    navigate("/mysentlist");
+  const navigateToWriteSent = () => {
+    navigate("/writesent");
   };
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const fetchComments = async () => {
       try {
         setError(null);
-        setPosts(null);
+        setComments(null);
         setLoading(true);
-        const response = await axios.get("http://127.0.0.1:8000/posts/");
+        const response = await axios.get("http://127.0.0.1:8000/comments/");
         console.log("response", response.data);
-        setPosts(response.data);
+        setComments(response.data);
       } catch (e) {
         setError(e);
       }
       setLoading(false);
     };
-    fetchPosts();
+    fetchComments();
   }, []);
 
   return (
     <MainWrapper>
       {error && <p>error</p>}
       {loading && <p>loading...</p>}
-      {posts &&
-        posts.map((post) => (
-          <div key={post.pk}>
-            <h1>{post.title}</h1>
-            <Button onClick={navigateToSentList}>SENT목록 보기</Button>
-            {/* <p>{post.published_date}</p> */}
+      {comments &&
+        comments.map((post) => (
+          <div key={comments.pk}>
+            <h1>{comments.post}</h1>
           </div>
         ))}
-      <Button onClick={navigateToPostSent}>카테고리 만들기</Button>
+      <Button onClick={navigateToWriteSent}>SENT 추가하기✏️</Button>
       {/* <button onClick={postPost}>임의로 post 버튼</button> */}
     </MainWrapper>
   );

@@ -4,14 +4,16 @@ import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../styles/Button";
 
+// -- [] 로그인 실패시, 예외처리하기
+
 export default function Login() {
   const [userInfo, setUserInfo] = useState({
     username: "",
     password: "",
   });
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
   const [token, setToken] = useState("");
-  const navigate = useNavigate();
   const [isEnable, setIsEnable] = useState(true);
 
   useEffect(() => {

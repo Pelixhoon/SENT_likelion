@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../styles/Button";
 
-//-- [] 회원가입시 '비밀번호 확인'란은 password와 password2가 같은지 확인하고 동일하지 않을 때 예외처리
+//-- [] 회원가입시 password와 password2가 같은지 확인하고 동일하지 않을 때 예외처리
 //-- [] 회원가입시 이미 있는 아이디, 비밀번호 조건 불충족 등 조건에 맞지 않아 회원가입 에러뜰 때 예외처리
 
 export default function Signup() {
@@ -15,8 +15,8 @@ export default function Signup() {
     password: "",
     password2: "",
   });
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const [isEnable, setIsEnable] = useState(true);
 
   useEffect(() => {

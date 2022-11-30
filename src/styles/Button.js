@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Button({ disabled, size, children }) {
-  return <StyledButton disabled={disabled}>{children}</StyledButton>;
+export default function Button({ disabled, size, children, onClick }) {
+  return (
+    <StyledButton disabled={disabled} onClick={onClick}>
+      {children}
+    </StyledButton>
+  );
 }
 
 const StyledButton = styled.button`
@@ -30,6 +34,7 @@ const StyledButton = styled.button`
   &:disabled {
     cursor: default;
     opacity: 0.5;
-    background: var(--button-bg-color, #025ce2);
+    color: #777777;
+    background: var(--button-bg-color, #fafafa);
   }
 `;
