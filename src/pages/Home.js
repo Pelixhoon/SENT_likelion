@@ -17,10 +17,13 @@ export default function Home() {
         color="white"
         fontSize="2.5rem"
       >
-        <PinkImg src="./images/pink.png" alt="sent_pink"></PinkImg>
+        <PinkImg src="./images/pink2.png" alt="sent_pink"></PinkImg>
         <BoxMysentContent>
           <BoxWord>MY SENT&nbsp;&nbsp;</BoxWord>
-          <ButtonImg src="./images/sent_button.png" alt="sent_button"></ButtonImg>
+          <ButtonImg
+            src="./images/sent_button.png"
+            alt="sent_button"
+          ></ButtonImg>
         </BoxMysentContent>
       </Box>
       <StyledParagraph>CHART</StyledParagraph>
@@ -31,7 +34,9 @@ export default function Home() {
             <option>최근 한달 간</option>
             <option>최근 1년 간</option>
           </SelectWhen>
-          <BoxChartText><SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에</BoxChartText> 
+          <BoxChartText>
+            <SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에
+          </BoxChartText>
           <BoxChartText>제일 많이 SENT를 남겼어요</BoxChartText>
           <Chart></Chart>
         </BoxChartContent>
@@ -69,14 +74,14 @@ const Box = styled.button`
 `;
 
 const PinkImg = styled.img`
-  margin-top: 1rem;
+  margin-top: -1rem;
   width: 30rem;
   opacity: 0.8;
 `;
 
 const BoxMysentContent = styled.div`
   width: 39.7rem;
-  height: 5rem;
+  margin-top: -1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -124,5 +129,5 @@ const SentSpan = styled.span`
 
 const Chart = styled.div`
   height: 20rem;
-  background-color:gray;
+  background-color: gray;
 `;
