@@ -33,7 +33,6 @@ const postSENT = async (SENTInfo, token) => {
     API_URL.POST_SENT,
     {
       title: SENTInfo.title,
-      body: SENTInfo.body,
       category: SENTInfo.category,
     },
     {
@@ -45,9 +44,9 @@ const postSENT = async (SENTInfo, token) => {
   return response;
 };
 
-// SENT를 GET하는 함수
-const getSENT = async (e) => {
-  const response = await axios.get(API_URL.SENTLIST);
+// 전체 SENT를 get하는 함수
+const getSENTS = async () => {
+  const response = await axios.get(API_URL.GET_SENTS);
   return response;
 };
 
@@ -55,6 +54,7 @@ const APIs = {
   login,
   signup,
   postSENT,
+  getSENTS,
   getProfile,
 };
 
