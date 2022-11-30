@@ -43,33 +43,33 @@ export default function PostSent() {
 
   return (
     <MainWrapper>
-      <h1>SENT 만들기</h1>
+      <PageTitle>SENT 만들기</PageTitle>
       <form onSubmit={handlePostSent}>
         <FormSection>
-          <p>SENT 이름</p>
-          <input
+          <ChoiceTitle>SENT 이름</ChoiceTitle>
+          <ChoiceInputName
             name="title"
             onChange={onFormChange}
             value={SENTinfo.title}
-          ></input>
-          <p>색상</p>
-          <select
+          ></ChoiceInputName>
+          <ChoiceTitle>색상</ChoiceTitle>
+          <ChoiceColorSelect
             autoFocus
             name="color"
             onChange={onFormChange}
             value={SENTinfo.color}
           >
-            <option value="red">Red</option>
-            <option value="orange">Orange</option>
-            <option value="yellow">Yellow</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
-            <option value="purple">Purple</option>
-          </select>
-          <Button type="submit" disabled={valid}>
-            만들기
-          </Button>
+            <option value="red">🔴 Red</option>
+            <option value="orange">🟠 Orange</option>
+            <option value="yellow"> 🟡 Yellow</option>
+            <option value="green">🟢 Green</option>
+            <option value="blue">🔵 Blue</option>
+            <option value="purple">🟣 Purple</option>
+          </ChoiceColorSelect>
         </FormSection>
+        <Button type="submit" disabled={valid}>
+            만들기
+        </Button>
       </form>
     </MainWrapper>
   );
@@ -77,13 +77,51 @@ export default function PostSent() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
   color: white;
 `;
 
+const PageTitle = styled.h1`
+  font-size: 3rem;
+  margin: 6rem;
+`;
+
 const FormSection = styled.div`
   display: flex;
   flex-direction: column;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  font-size: 2rem;
+  width: 45rem;
+  height: 50rem;
+`;
+
+const ChoiceTitle = styled.p`
+
+`;
+
+const ChoiceInputName = styled.input`
+  height: 3.8rem;
+  margin-bottom: 2.5rem;
+  color: white;
+  font-size: 2rem;
+  background-color:rgba(25, 25, 25, 1);
+  border:0.3rem;
+  border-bottom-style: solid;
+  border-color:rgba(25, 25, 25, 1);
+  border-bottom-color:rgba(78, 25, 255, 1);
+`;
+
+const ChoiceColorSelect = styled.select`
+  height: 3.8rem;
+  margin-bottom: 2.5rem;
+  color: white;
+  font-size: 2rem;
+  background-color:rgba(25, 25, 25, 1);
+  border: 0.3rem;
+  border-bottom-style: solid;
+  border-color:rgba(25, 25, 25, 1);
+  border-bottom-color:rgba(78, 25, 255, 1);
 `;

@@ -43,19 +43,19 @@ export default function WriteMySent() {
 
   return (
     <MainWrapper>
-      <h1>SENT 만들기</h1>
+      <PageTitle>만든 이름으로 들어가야 함</PageTitle>
       <form onSubmit={handleWriteSent}>
-        <p>으쌰으쌰 운동🏃🏻‍♀️</p>
         <SentArea>
-          <textarea
+          <TextArea
             name="body"
             onChange={onFormChange}
             value={SENTinfo.body}
-          ></textarea>
-          <Button type="submit" disabled={valid}>
-            만들기
-          </Button>
+            placeholder="오늘의 문장을 기록해보세요 :)"
+          ></TextArea>
         </SentArea>
+        <Button type="submit" disabled={valid}>
+            만들기
+        </Button>
       </form>
     </MainWrapper>
   );
@@ -64,13 +64,33 @@ export default function WriteMySent() {
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 800px;
   color: white;
 `;
 
+const PageTitle = styled.h1`
+  font-size: 3rem;
+  margin: 6rem;
+`;
+
+
 const SentArea = styled.div`
   display: flex;
   flex-direction: column;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  font-size: 2rem;
+  width: 45rem;
+  height: 50rem;
+`;
+
+const TextArea = styled.textarea`
+  height: 45rem;
+  background-color: rgba(145, 255, 238, 1);
+  border-radius: 1.8rem;
+  padding: 3rem;
+  font-size: 2rem;
+  font-weight: bold;
 `;
