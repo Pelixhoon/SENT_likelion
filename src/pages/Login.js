@@ -13,7 +13,6 @@ export default function Login() {
   });
   const navigate = useNavigate();
   const [error, setError] = useState(null);
-  const [token, setToken] = useState("");
   const [isEnable, setIsEnable] = useState(true);
 
   useEffect(() => {
@@ -34,7 +33,7 @@ export default function Login() {
     await APIs.login(userInfo)
       .then((response) => {
         console.log("로그인 성공", response);
-        setToken(response.data.token);
+        localStorage.setItem("token", response.data.token);
         navigate("/home");
       })
       .catch((error) => {

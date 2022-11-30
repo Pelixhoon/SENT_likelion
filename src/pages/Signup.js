@@ -106,12 +106,14 @@ export default function Signup() {
             onChange={onFormChange}
             onBlur={validateInput}
             value={userInfo.username}
+            placeholder="적당한 아이디를 입력하세요."
           ></IDPWInput>
           <IDPWTitle>이메일</IDPWTitle>
           <IDPWInput
             name="email"
             onChange={onFormChange}
             value={userInfo.email}
+            placeholder="이메일을 입력하세요."
           ></IDPWInput>
           <IDPWTitle>비밀번호</IDPWTitle>
           <IDPWInput
@@ -119,7 +121,11 @@ export default function Signup() {
             type="password"
             onChange={onFormChange}
             value={userInfo.password}
+<<<<<<< HEAD
             onBlur={validateInput}
+=======
+            placeholder="적당한 비밀번호를 입력하세요."
+>>>>>>> f5186aee078d56801ae1f45a944374a8aaea7cf1
           ></IDPWInput>
           <IDPWTitle>비밀번호 확인</IDPWTitle>
           <IDPWInput
@@ -127,7 +133,11 @@ export default function Signup() {
             type="password"
             onChange={onFormChange}
             value={userInfo.password2}
+<<<<<<< HEAD
             onBlur={validateInput}
+=======
+            placeholder="비밀번호를 확인하세요."
+>>>>>>> f5186aee078d56801ae1f45a944374a8aaea7cf1
           ></IDPWInput>
           {error.password2 && <span className="err">{error.password2}</span>}
         </LoginSection>
