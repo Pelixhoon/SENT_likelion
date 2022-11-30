@@ -45,8 +45,16 @@ export default function PostComment() {
 
   return (
     <MainWrapper>
-      <ButtonImg2 src="./images/backbutton.png" alt="sent_button"></ButtonImg2>
-      <PageTitle>만든 이름으로 들어가야</PageTitle>
+      <PageTop>
+        <ButtonImg2 
+          src="../images/backbutton.png" 
+          alt="sent_button"
+        ></ButtonImg2>
+        <PageTitleDiv>
+          <PageTitle>만든 이름으로 들어가야</PageTitle>
+        </PageTitleDiv>
+      </PageTop>
+      
       <form onSubmit={handlePostComment}>
         <SentArea>
           <TextArea
@@ -71,6 +79,28 @@ const MainWrapper = styled.div`
   color: white;
 `;
 
+const PageTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 45rem;
+`;
+
+const ButtonImg2 = styled.img`
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-left: 2.5rem;
+`;
+
+const PageTitleDiv = styled.div`
+  width: 31rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 const PageTitle = styled.h1`
   font-size: 3rem;
   margin: 6rem;
@@ -93,8 +123,4 @@ const TextArea = styled.textarea`
   padding: 3rem;
   font-size: 2rem;
   font-weight: bold;
-`;
-
-const ButtonImg2 = styled.img`
-  width: 4.5rem;
 `;
