@@ -18,14 +18,23 @@ export default function Home() {
         fontSize="2.5rem"
       >
         <PinkImg src="./images/pink.png" alt="sent_pink"></PinkImg>
-        <BoxContent>
-          <BoxWord>MY SENT</BoxWord>
+        <BoxMysentContent>
+          <BoxWord>MY SENT&nbsp;&nbsp;</BoxWord>
           <ButtonImg src="./images/sent_button.png" alt="sent_button"></ButtonImg>
-        </BoxContent>
+        </BoxMysentContent>
       </Box>
       <StyledParagraph>CHART</StyledParagraph>
-      <Box backgroundColor="white" color="black" fontSize="2rem">
-        최근 일주일 간 으쌰으쌰 운동🏃🏻‍♀️에 제일 많이 SENT를 남겼어요
+      <Box color="white" fontSize="2rem">
+        <BoxChartContent>
+          <SelectWhen>
+            <option>최근 일주일 간</option>
+            <option>최근 한달 간</option>
+            <option>최근 1년 간</option>
+          </SelectWhen>
+          <BoxChartText><SentSpan>으쌰으쌰 운동🏃🏻‍♀️</SentSpan>에</BoxChartText> 
+          <BoxChartText>제일 많이 SENT를 남겼어요</BoxChartText>
+          <Chart></Chart>
+        </BoxChartContent>
       </Box>
     </MainWrapper>
   );
@@ -51,7 +60,7 @@ const StyledParagraph = styled.p`
 
 const Box = styled.button`
   font-size: ${(props) => props.fontSize};
-  height: 35rem;
+  height: 33rem;
   width: 39.7rem;
   color: ${(props) => props.color};
   border: none;
@@ -60,15 +69,21 @@ const Box = styled.button`
 `;
 
 const PinkImg = styled.img`
-  width: 40rem;
+  margin-top: 1rem;
+  width: 30rem;
+  opacity: 0.8;
 `;
 
-const BoxContent = styled.div`
+const BoxMysentContent = styled.div`
   width: 39.7rem;
+  height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   padding-right: 2rem;
+  position: relative;
+  bottom: 1rem;
 `;
 
 const BoxWord = styled.p`
@@ -76,5 +91,38 @@ const BoxWord = styled.p`
 `;
 
 const ButtonImg = styled.img`
-  width: 5rem;
+  width: 4.5rem;
+`;
+
+const BoxChartContent = styled.div`
+  margin: 0rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 37rem;
+`;
+
+const SelectWhen = styled.select`
+  width: 12.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 0.8rem;
+  padding: 0.5rem;
+  background-color: rgba(115, 115, 115, 1);
+  color: white;
+`;
+
+const BoxChartText = styled.p`
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-top: 0.3rem;
+`;
+
+const SentSpan = styled.span`
+  font-size: 2.8rem;
+`;
+
+const Chart = styled.div`
+  height: 20rem;
+  background-color:gray;
 `;
