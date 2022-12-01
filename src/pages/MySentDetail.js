@@ -9,6 +9,11 @@ export default function MySentDetail(props) {
   const { id } = useParams();
   console.log(id);
 
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+
   const [mySENTS, setMySENTS] = useState(null);
   const [myCOMMENTS, setMyCOMMENTS] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -89,7 +94,8 @@ export default function MySentDetail(props) {
       {loading && <p>loading...</p>}
       {myCOMMENTS &&
         myCOMMENTS.map((comment) => (
-          <PostSection key={comment.pk}>
+          <PostSection key={comment.pk} colorOption={COLORS[comment.color]}>
+            <DateSection>{year + "." + month + "." + day}</DateSection>
             <CommentDiv key={comment.pk}>
               <Comment>{comment.text}</Comment>
               {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
@@ -111,13 +117,17 @@ const MainWrapper = styled.div`
   flex-direction: column;
   justify-content: fle-xstart;
   align-items: center;
-  height: 800px;
+  min-height: 800px;
+  height: auto;
   color: white;
 `;
 
-const BigSection = styled.div`
-background-color: ${({ colorOption }) => colorOption}; 
-`
+const DateSection = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-right: 1.5rem;
+`;
 
 const PageTop = styled.div`
   display: flex;
@@ -148,7 +158,7 @@ const PageTitle = styled.h1`
 
 const PostSection = styled.div`
   display: flex;
-  flex-direction: column 1rem;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: solid;
@@ -159,7 +169,8 @@ const PostSection = styled.div`
   color: black;
   background-color: white;
   width: 40rem;
-  height: 12rem;
+  min-height: 12rem;
+  height: auto;
 `;
 
 // const PostTitle = styled.p`
