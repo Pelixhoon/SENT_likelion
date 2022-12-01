@@ -59,6 +59,11 @@ export default function MySentDetail(props) {
   //   setLoading(false);
   // };
 
+  // var boxcolor = '#';
+  // var letters = ['FFA5FC', 'FFB978', 'EFEB88', '83FFBC', '91FFEE', 'B499FF'];
+  // boxcolor += letters[Math.floor(Math.random() * letters.length)];
+  // document.getElementById('wrap').style.background = color;
+
   useEffect(() => {
     const userId = localStorage.getItem("user_id");
     getMySENTS(userId);
@@ -84,7 +89,7 @@ export default function MySentDetail(props) {
       {loading && <p>loading...</p>}
       {myCOMMENTS &&
         myCOMMENTS.map((comment) => (
-          <PostSection key={comment.pk} colorOption={COLORS[comment.color]}>
+          <PostSection key={comment.pk}>
             <CommentDiv key={comment.pk}>
               <Comment>{comment.text}</Comment>
               {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
@@ -109,6 +114,10 @@ const MainWrapper = styled.div`
   height: 800px;
   color: white;
 `;
+
+const BigSection = styled.div`
+background-color: ${({ colorOption }) => colorOption}; 
+`
 
 const PageTop = styled.div`
   display: flex;
@@ -147,8 +156,8 @@ const PostSection = styled.div`
   margin-top: 0rem;
   margin-bottom: 2rem;
   padding: 3rem;
-  background-color: white;
   color: black;
+  background-color: white;
   width: 40rem;
   height: 12rem;
 `;
@@ -164,7 +173,8 @@ const DivForStaticButton = styled.div`
   margin-top: 65.563rem;
 `;
 
-const CommentDiv = styled.div``;
+const CommentDiv = styled.div`
+`;
 
 const Comment = styled.p`
   width: 27rem;
