@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
 import COLORS from "../styles/Colors";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function MySent() {
   const [mySENTS, setMySENTS] = useState(null);
@@ -137,7 +137,7 @@ const PostSection = styled.div`
 `;
 
 const PostTitle = styled.p`
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
 `;
