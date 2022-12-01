@@ -16,6 +16,10 @@ export default function PostComment() {
   const navigate = useNavigate();
   const [, setIsEnable] = useState(true);
 
+  const navigateToBack = () => {
+    navigate(-1);
+  };
+
   useEffect(() => {
     postInfo.text ? setIsEnable(false) : setIsEnable(true);
   }, [postInfo]);
@@ -46,15 +50,16 @@ export default function PostComment() {
   return (
     <MainWrapper>
       <PageTop>
-        <ButtonImg2 
-          src="../images/backbutton.png" 
+        <ButtonImg2
+          src="../images/backbutton.png"
           alt="sent_button"
+          onClick={navigateToBack}
         ></ButtonImg2>
         <PageTitleDiv>
-          <PageTitle>** sent 이름?</PageTitle>
+          <PageTitle>SENT 추가하기</PageTitle>
         </PageTitleDiv>
       </PageTop>
-      
+
       <form onSubmit={handlePostComment}>
         <SentArea>
           <TextArea
@@ -120,7 +125,7 @@ const SentArea = styled.div`
 
 const TextArea = styled.textarea`
   height: 45rem;
-  background-color: rgba(145, 255, 238, 1);
+  background-color: white;
   border-radius: 1.8rem;
   padding: 3rem;
   font-size: 2rem;

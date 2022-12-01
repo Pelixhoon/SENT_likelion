@@ -3,6 +3,7 @@ import APIs from "../api/Main";
 import styled from "styled-components";
 import Button from "../styles/Button";
 import { useNavigate, useParams } from "react-router-dom";
+import COLORS from "../styles/Colors";
 
 export default function MySentDetail(props) {
   const { id } = useParams();
@@ -19,17 +20,18 @@ export default function MySentDetail(props) {
     navigate("/postcomment/" + id);
   };
 
+  const navigateToBack = () => {
+    navigate(-1);
+  };
+
   const getMySENTS = async (userId) => {
     try {
       const response = await APIs.getSENTS();
-      // console.log(
-      //   "MY SENT filter 목록",
-      //   response.data.filter((SENT) => SENT.profile.user.toString() === userId)
-      // );
       const posts = response.data.filter(
         (SENT) => SENT.profile.user.toString() === userId
       );
       setMySENTS(posts);
+
       const comments = posts.filter((post) => post.pk.toString() === id)[0]
         .comments;
       setMyCOMMENTS(comments);
@@ -68,9 +70,10 @@ export default function MySentDetail(props) {
         <ButtonImg2
           src="../images/backbutton.png"
           alt="sent_button"
+          onClick={navigateToBack}
         ></ButtonImg2>
         <PageTitleDiv>
-          <PageTitle>SENT 이름?</PageTitle>
+          <PageTitle>MY SENT</PageTitle>
         </PageTitleDiv>
       </PageTop>
 
@@ -78,16 +81,12 @@ export default function MySentDetail(props) {
       {loading && <p>loading...</p>}
       {myCOMMENTS &&
         myCOMMENTS.map((comment) => (
-          <PostSection key={comment.pk}>
+          <PostSection key={comment.pk} colorOption={COLORS[comment.color]}>
             <CommentDiv key={comment.pk}>
               <Comment>{comment.text}</Comment>
               {/* <Button onClick={navigateToSentList}>SENT목록 보기</Button> */}
               {/* <p>{post.published_date}</p> */}
             </CommentDiv>
-            <ButtonImg
-              src="../images/backbutton.png"
-              alt="sent_button"
-            ></ButtonImg>
           </PostSection>
         ))}
       <DivForStaticButton>
@@ -145,7 +144,7 @@ const PostSection = styled.div`
   margin-top: 0rem;
   margin-bottom: 2rem;
   padding: 3rem;
-  background-color: lightblue;
+  background-color: white;
   color: black;
   width: 40rem;
   height: 12rem;
@@ -167,9 +166,7 @@ const CommentDiv = styled.div``;
 const Comment = styled.p`
   width: 27rem;
   word-wrap: break-word;
-`;
-
-const ButtonImg = styled.img`
-  width: 4.5rem;
-  transform: rotate(180deg);
+  font-size: 1.6rem;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
 `;
