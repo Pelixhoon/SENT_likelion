@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import APIs from "../api/Main";
 import styled from "styled-components";
 import Button from "../styles/Button";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 export default function MySentDetail(props) {
   const { id } = useParams();
@@ -65,10 +65,14 @@ export default function MySentDetail(props) {
   return (
     <MainWrapper>
       <PageTop>
-        <ButtonImg2
-          src="../images/backbutton.png"
-          alt="sent_button"
-        ></ButtonImg2>
+        <Link to="/mysent">
+          <button>
+            <ButtonImg2
+              src="../images/backbutton.png"
+              alt="sent_button"
+            ></ButtonImg2>
+          </button>
+        </Link>
         <PageTitleDiv>
           <PageTitle>SENT 이름?</PageTitle>
         </PageTitleDiv>

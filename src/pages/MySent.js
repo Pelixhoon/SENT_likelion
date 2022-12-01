@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
 import COLORS from "../styles/Colors";
+import { Link } from 'react-router-dom';
 
 export default function MySent() {
   const [mySENTS, setMySENTS] = useState(null);
@@ -44,10 +45,14 @@ export default function MySent() {
   return (
     <MainWrapper>
       <PageTop>
-        <ButtonImg2
-          src="./images/backbutton.png"
-          alt="sent_button"
-        ></ButtonImg2>
+        <Link to="/home">
+          <button>
+            <ButtonImg2
+              src="./images/backbutton.png"
+              alt="sent_button"
+            ></ButtonImg2>
+          </button>
+        </Link>
         <PageTitleDiv>
           <PageTitle>MY SENT</PageTitle>
         </PageTitleDiv>

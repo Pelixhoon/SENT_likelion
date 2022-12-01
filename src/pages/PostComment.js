@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import APIs from "../api/Main";
 import Button from "../styles/Button";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 
 export default function PostComment() {
   const { id } = useParams();

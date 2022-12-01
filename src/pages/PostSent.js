@@ -4,6 +4,7 @@ import axios from "axios";
 import APIs from "../api/Main";
 import Button from "../styles/Button";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 export default function PostSent() {
   const [token, setToken] = useState(null);
@@ -51,10 +52,14 @@ export default function PostSent() {
   return (
     <MainWrapper>
       <PageTop>
-        <ButtonImg2
-          src="./images/backbutton.png"
-          alt="sent_button"
-        ></ButtonImg2>
+        <Link to="/mysent">
+          <button>
+            <ButtonImg2
+              src="./images/backbutton.png"
+              alt="sent_button"
+            ></ButtonImg2>
+          </button>
+        </Link>
         <PageTitleDiv>
           <PageTitle>SENT 만들기</PageTitle>
         </PageTitleDiv>
