@@ -51,7 +51,7 @@ export default function PostComment() {
           alt="sent_button"
         ></ButtonImg2>
         <PageTitleDiv>
-          <PageTitle>만든 이름으로 들어가야</PageTitle>
+          <PageTitle>** sent 이름?</PageTitle>
         </PageTitleDiv>
       </PageTop>
       
